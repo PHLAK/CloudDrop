@@ -1,8 +1,8 @@
 <?php
 
-namespace CloudDrop\Providers\Dropbox;
+namespace PHLAK\CloudDrop\Providers\Dropbox;
 
-use CloudDrop\Interfaces\Provider;
+use PHLAK\CloudDrop\Interfaces\Provider;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 
@@ -16,7 +16,7 @@ class Client implements Provider
      *
      * @param string $accessToken Dropbox API access token
      */
-    function __construct($accessToken)
+    public function __construct($accessToken)
     {
         $this->accessToken = $accessToken;
     }
@@ -24,7 +24,7 @@ class Client implements Provider
     /**
      * Upload a file to Dropbox.
      *
-     * @param string $path Path to file to be uploaded
+     * @param string $path        Path to file to be uploaded
      * @param string $destination Path/name of resulting file in Dropbox
      *
      * @return object Uploaded file metadata object
@@ -129,9 +129,9 @@ class Client implements Provider
     /**
      * List the contents of a directory in Dropbox.
      *
-     * @param string $path Path of directory to list
-     * @param bool $recursive If true, list directories recursively
-     * @param bool $deleted If true, include deleted files and folders
+     * @param string $path      Path of directory to list
+     * @param bool   $recursive If true, list directories recursively
+     * @param bool   $deleted   If true, include deleted files and folders
      *
      * @return array Array of directory content objects
      */
@@ -158,7 +158,7 @@ class Client implements Provider
     }
 
     /**
-     * Get the Dropbox API RPC endpoint client
+     * Get the Dropbox API RPC endpoint client.
      *
      * @return GuzzleHttp\Client GuzzleHttp client instance
      */
@@ -173,7 +173,7 @@ class Client implements Provider
     }
 
     /**
-     * Get the Dropbox API Content client
+     * Get the Dropbox API Content client.
      *
      * @return GuzzleHttp\Client GuzzleHttp client instance
      */
@@ -190,7 +190,7 @@ class Client implements Provider
     /**
      * Upload a file less than or equal to 150MB in a single transaction.
      *
-     * @param string $path Path to file to be uploaded
+     * @param string $path        Path to file to be uploaded
      * @param string $destination Path/name of resulting file in Dropbox
      *
      * @return object Uploaded file metadata object
@@ -216,8 +216,8 @@ class Client implements Provider
     /**
      * Upload a file in multiple chunks. Required for files over 150MB in size.
      *
-     * @param string $path Path to file to be uploaded
-     * @param int $fileSize Size of file in bytes
+     * @param string $path        Path to file to be uploaded
+     * @param int    $fileSize    Size of file in bytes
      * @param string $destination Path/name of resulting file in Dropbox
      *
      * @return object Upload session object
@@ -254,8 +254,8 @@ class Client implements Provider
      * Upload a chunk of data belonging to an upload session.
      *
      * @param string $sessionId Upload session ID
-     * @param string $chunk String of chunk data, should not exceed 150MB
-     * @param int $offset Offset for the chunk being appended
+     * @param string $chunk     String of chunk data, should not exceed 150MB
+     * @param int    $offset    Offset for the chunk being appended
      *
      * @return object Upload session object
      */
@@ -278,8 +278,8 @@ class Client implements Provider
     /**
      * Close a chuncked upload session.
      *
-     * @param string $sessionId Upload session ID
-     * @param int $fileSize Size of file in bytes
+     * @param string $sessionId   Upload session ID
+     * @param int    $fileSize    Size of file in bytes
      * @param string $destination Path/name of resulting file in Dropbox
      *
      * @return object Uploaded file metadata object
@@ -308,13 +308,14 @@ class Client implements Provider
     }
 
     /**
-     * Get more contents from a directory
+     * Get more contents from a directory.
      *
      * @param string $cursor Current cursor supplied by list_folder request
      *
      * @return object Folder listing object
      */
-    protected function listContinue($cursor) {
+    protected function listContinue($cursor)
+    {
         $response = $this->api()->post('files/list_folder/continue', [
             'json' => ['cursor' => $cursor]
         ]);
@@ -323,7 +324,7 @@ class Client implements Provider
     }
 
     /**
-     * Ensure proper formatting of a file path string
+     * Ensure proper formatting of a file path string.
      *
      * @param string $path File path in Dropbox
      *

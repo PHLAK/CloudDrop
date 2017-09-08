@@ -35,13 +35,19 @@ Initializing the Client
 First, import CloudDrop:
 
 ```php
-use CloudDrop;
+use PHLAK\CloudDrop;
 ```
 
 Then instantiate the class for your cloud storage provider of choice:
 
 ```php
-$clouddrop = CloudDrop\Provider::init('provider_name', 'access_token');
+$provider = CloudDrop\Provider::init($providerName, array $config);
+```
+
+For example, to instantate the Dropbox provider you would use the following:
+
+```php
+$dropbox = CloudDrop\Provider::init('dropbox',['access_token' => 'your_access_token']);
 ```
 
 Configuration

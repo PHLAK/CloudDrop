@@ -1,8 +1,8 @@
 <?php
 
-namespace CloudDrop\Providers\Dropbox;
+namespace PHLAK\CloudDrop\Providers\Dropbox;
 
-use CloudDrop\Interfaces\File as FileInterface;
+use PHLAK\CloudDrop\Interfaces\File as FileInterface;
 
 class File implements FileInterface
 {
@@ -47,7 +47,7 @@ class File implements FileInterface
     }
 
     /**
-     * Get the raw File contents as a string
+     * Get the raw File contents as a string.
      *
      * @return string File contents
      */
@@ -57,7 +57,7 @@ class File implements FileInterface
     }
 
     /**
-     * Get the File metadata
+     * Get the File metadata.
      *
      * @return object JSON object of File metadata
      */
@@ -67,7 +67,7 @@ class File implements FileInterface
     }
 
     /**
-     * Get the File ID
+     * Get the File ID.
      *
      * @return string File ID
      */
@@ -77,7 +77,7 @@ class File implements FileInterface
     }
 
     /**
-     * Get the File name
+     * Get the File name.
      *
      * @return string File name
      */
@@ -87,7 +87,7 @@ class File implements FileInterface
     }
 
     /**
-     * Get the file size
+     * Get the file size.
      *
      * @return int File size in bytes
      */
@@ -97,7 +97,7 @@ class File implements FileInterface
     }
 
     /**
-     * Create the File at a specific path
+     * Create the File at a specific path.
      *
      * @param string $path Path of file to be created
      *

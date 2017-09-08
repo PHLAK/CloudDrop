@@ -1,21 +1,19 @@
 <?php
 
-namespace CloudDrop\Interfaces;
+namespace PHLAK\CloudDrop\Interfaces;
 
 interface Provider
 {
     /**
-     * Upload a file to the Provider
+     * Upload a file to the Provider.
      *
-     * @param string $path Path to file to send
+     * @param string $path        Path to file to send
      * @param string $destination
-     *
-     * @return void
      */
     public function upload($path, $destination);
 
     /**
-     * Download a file from the Provider
+     * Download a file from the Provider.
      *
      * @param string $path Name of file to be retrieved
      *
@@ -24,7 +22,7 @@ interface Provider
     public function download($path);
 
     /**
-     * Get file info from the Provider
+     * Get file info from the Provider.
      *
      * @param string $path Name of file
      *
@@ -33,7 +31,7 @@ interface Provider
     public function info($path);
 
     /**
-     * Check if a file exists in the Provider
+     * Check if a file exists in the Provider.
      *
      * @param string $path Name of file to check for existence
      *
@@ -42,7 +40,7 @@ interface Provider
     public function exists($path);
 
     /**
-     * Delete a file from the Provider
+     * Delete a file from the Provider.
      *
      * @param string $path Name of file to be deleted
      *
@@ -51,7 +49,7 @@ interface Provider
     public function delete($path);
 
     /**
-     * List the contents of a directory from the Provider
+     * List the contents of a directory from the Provider.
      *
      * @param string $path Path to directory to list
      *
