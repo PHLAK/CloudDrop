@@ -33,7 +33,7 @@ class Client implements Provider
     public function upload($path, $destination = null)
     {
         $fileSize = filesize($path);
-        $destination = $this->path($destination ?? basename($path));
+        $destination = $this->path($destination ?: basename($path));
 
         if ($fileSize <= 150000000) {
             return $this->simpleUpload($path, $destination);
