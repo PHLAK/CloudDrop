@@ -2,23 +2,24 @@
 
 namespace PHLAK\CloudDrop\Providers\Dropbox;
 
+use PHLAK\Config;
 use PHLAK\CloudDrop\Interfaces\Provider;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 
 class Client implements Provider
 {
-    /** @var string Dropbox API access token */
-    protected $accessToken;
+    /** @var Config Instantiated Config object */
+    protected $config;
 
     /**
      * Providers\Dropbox\Client constructor. Runs on object creation.
      *
-     * @param string $accessToken Dropbox API access token
+     * @param array $config Array of config options
      */
-    public function __construct($accessToken)
+    public function __construct(array $config)
     {
-        $this->accessToken = $accessToken;
+        $this->config = new Config\Config($config);
     }
 
     /**
@@ -167,7 +168,7 @@ class Client implements Provider
         return new GuzzleClient([
             'base_uri' => 'https://api.dropboxapi.com/2/',
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->accessToken
+                'Authorization' => 'Bearer ' . $this->config->access_token
             ]
         ]);
     }
@@ -182,7 +183,7 @@ class Client implements Provider
         return new GuzzleClient([
             'base_uri' => 'https://content.dropboxapi.com/2/',
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->accessToken
+                'Authorization' => 'Bearer ' . $this->config->access_token
             ]
         ]);
     }

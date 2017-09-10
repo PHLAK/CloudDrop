@@ -5,6 +5,13 @@ namespace PHLAK\CloudDrop\Interfaces;
 interface Provider
 {
     /**
+     * Class constructor; runs on object creation.
+     *
+     * @param array $config Array of config options
+     */
+    public function __construct(array $config);
+
+    /**
      * Upload a file to the Provider.
      *
      * @param string $path        Path to file to send

@@ -15,13 +15,13 @@ class Provider
     /**
      * Initialize a Provider.
      *
-     * @param string $provider    Provider string
-     * @param string $accessToken Provider API access token
+     * @param string $provider Provider string
+     * @param array $config    Array of config options
      *
      * @return Interfaces\Client Instance of a Provider client
      */
-    public static function init($provider, $accessToken)
+    public static function init($provider, array $config)
     {
-        return new self::$clients[$provider]($accessToken);
+        return new self::$clients[$provider]($config);
     }
 }
